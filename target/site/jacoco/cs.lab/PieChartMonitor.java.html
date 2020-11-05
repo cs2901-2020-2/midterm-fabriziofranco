@@ -2,6 +2,8 @@
 
 import java.awt.*;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.swing.JFrame;
@@ -14,39 +16,45 @@ import org.jfree.chart.labels.PieSectionLabelGenerator;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
 
 public class PieChartMonitor extends JFrame implements Observer{
 
-<span class="fc" id="L20">    private static final Logger logger = Logger.getLogger(PieChartMonitor.class.getName());</span>
-<span class="fc" id="L21">    DefaultPieDataset dataset=new DefaultPieDataset();</span>
+<span class="fc" id="L23">    private static final Logger logger = Logger.getLogger(PieChartMonitor.class.getName());</span>
+<span class="fc" id="L24">    private List&lt;Integer&gt; numbers = new ArrayList&lt;Integer&gt;();</span>
 
     public PieChartMonitor() throws HeadlessException {
-<span class="fc" id="L24">        super(&quot;Pie Chart&quot;);</span>
-<span class="fc" id="L25">    }</span>
+<span class="fc" id="L27">        super(&quot;Pie Chart&quot;);</span>
+<span class="fc" id="L28">    }</span>
 
 
     @Override
     public void update(Integer number) {
-<span class="fc" id="L30">        dataset.setValue(&quot; &quot;,number);</span>
-<span class="fc" id="L31">        JFreeChart chart = ChartFactory.createPieChart(</span>
+<span class="fc" id="L33">        numbers.add(number);</span>
+<span class="fc" id="L34">        JFreeChart chart = ChartFactory.createPieChart(</span>
                 &quot;Pie Chart&quot;,
-                dataset,
+<span class="fc" id="L36">                createDataset(),</span>
                 true,
                 true,
                 false);
-<span class="fc" id="L37">        PieSectionLabelGenerator labelGenerator = new StandardPieSectionLabelGenerator(</span>
+<span class="fc" id="L40">        PieSectionLabelGenerator labelGenerator = new StandardPieSectionLabelGenerator(</span>
                 &quot;Marks {0} : ({2})&quot;, new DecimalFormat(&quot;0&quot;), new DecimalFormat(&quot;0%&quot;));
-<span class="fc" id="L39">        ((PiePlot) chart.getPlot()).setLabelGenerator(labelGenerator);</span>
+<span class="fc" id="L42">        ((PiePlot) chart.getPlot()).setLabelGenerator(labelGenerator);</span>
 
-<span class="fc" id="L41">        ChartPanel panel = new ChartPanel(chart);</span>
-<span class="fc" id="L42">        setContentPane(panel);</span>
+<span class="fc" id="L44">        ChartPanel panel = new ChartPanel(chart);</span>
+<span class="fc" id="L45">        setContentPane(panel);</span>
 
-<span class="fc" id="L44">        this.setSize(800, 400);</span>
-<span class="fc" id="L45">        this.setLocationRelativeTo(null);</span>
-<span class="fc" id="L46">        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);</span>
-<span class="fc" id="L47">        this.setVisible(true);</span>
-<span class="fc" id="L48">        logger.info(&quot;PieChartMonitor has been updated&quot;);</span>
-<span class="fc" id="L49">    }</span>
+<span class="fc" id="L47">        this.setSize(800, 400);</span>
+<span class="fc" id="L48">        this.setLocationRelativeTo(null);</span>
+<span class="fc" id="L49">        this.setVisible(true);</span>
+<span class="fc" id="L50">        logger.info(&quot;PieChartMonitor has been updated&quot;);</span>
+<span class="fc" id="L51">    }</span>
+
+    private PieDataset createDataset() {
+<span class="fc" id="L54">        DefaultPieDataset dataset = new DefaultPieDataset( );</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        for (Integer number : this.numbers) dataset.setValue( Integer.toString(number), number);</span>
+<span class="fc" id="L56">        return dataset;</span>
+    }
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

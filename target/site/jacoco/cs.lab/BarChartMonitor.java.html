@@ -1,19 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BarChartMonitor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lab4</a> &gt; <a href="index.source.html" class="el_package">cs.lab</a> &gt; <span class="el_source">BarChartMonitor.java</span></div><h1>BarChartMonitor.java</h1><pre class="source lang-java linenums">package cs.lab;
 
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
-<span class="nc" id="L7">public class BarChartMonitor implements Observer {</span>
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.PieSectionLabelGenerator;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
 
-<span class="nc" id="L9">    private static final Logger logger = Logger.getLogger(BarChartMonitor.class.getName());</span>
-<span class="nc" id="L10">    List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();</span>
+public class BarChartMonitor extends JFrame implements Observer {
+
+<span class="fc" id="L26">    private static final Logger logger = Logger.getLogger(BarChartMonitor.class.getName());</span>
+<span class="fc" id="L27">    private List&lt;Integer&gt; numbers = new ArrayList&lt;Integer&gt;();</span>
+
+    public BarChartMonitor() {
+<span class="fc" id="L30">        super(&quot;Bar Chart&quot;);</span>
+<span class="fc" id="L31">    }</span>
+
 
     @Override
     public void update(Integer number) {
-<span class="nc" id="L14">        list.add(number);</span>
-<span class="nc" id="L15">        logger.info(&quot;PieChartMonitor has been updated&quot;);</span>
-<span class="nc" id="L16">    }</span>
+<span class="nc" id="L36">        numbers.add(number);</span>
+<span class="nc" id="L37">        JFreeChart chart = ChartFactory.createBarChart(</span>
+                &quot;Bar Chart&quot;,&quot; &quot;,&quot;&quot;,
+<span class="nc" id="L39">                createDataset(),</span>
+                PlotOrientation.VERTICAL,
+                true,true,
+                false);
+<span class="nc" id="L43">        PieSectionLabelGenerator labelGenerator = new StandardPieSectionLabelGenerator(</span>
+                &quot;Marks {0} : ({2})&quot;, new DecimalFormat(&quot;0&quot;), new DecimalFormat(&quot;0%&quot;));
+<span class="nc" id="L45">        ((PiePlot) chart.getPlot()).setLabelGenerator(labelGenerator);</span>
+
+<span class="nc" id="L47">        ChartPanel panel = new ChartPanel(chart);</span>
+<span class="nc" id="L48">        setContentPane(panel);</span>
+
+<span class="nc" id="L50">        this.setSize(800, 400);</span>
+<span class="nc" id="L51">        this.setLocationRelativeTo(null);</span>
+<span class="nc" id="L52">        this.setVisible(true);</span>
+<span class="nc" id="L53">        logger.info(&quot;BarChar has been updated&quot;);</span>
+<span class="nc" id="L54">    }</span>
+
+    private CategoryDataset createDataset() {
+<span class="nc" id="L57">        DefaultCategoryDataset dataset = new DefaultCategoryDataset( );</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">        for (Integer number : this.numbers) dataset.setValue( number,Integer.toString(number), Integer.toString(number));</span>
+<span class="nc" id="L59">        return dataset;</span>
+    }
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

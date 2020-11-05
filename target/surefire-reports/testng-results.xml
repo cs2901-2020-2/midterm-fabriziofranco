@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2020-11-05T09:48:32 PET" name="cs.lab.AuctionTest" finished-at="2020-11-05T09:48:33 PET" duration-ms="1029">
+  <suite started-at="2020-11-05T10:22:18 PET" name="cs.lab.AuctionTest" finished-at="2020-11-05T10:22:19 PET" duration-ms="1002">
     <groups>
     </groups>
-    <test started-at="2020-11-05T09:48:32 PET" name="Command line test" finished-at="2020-11-05T09:48:33 PET" duration-ms="1029">
+    <test started-at="2020-11-05T10:22:18 PET" name="Command line test" finished-at="2020-11-05T10:22:19 PET" duration-ms="1002">
       <class name="cs.lab.AuctionTest">
-        <test-method signature="testCase0()[pri:0, instance:cs.lab.AuctionTest@629f066f]" started-at="2020-11-05T09:48:32 PET" name="testCase0" finished-at="2020-11-05T09:48:33 PET" duration-ms="988" status="PASS">
+        <test-method signature="testCase0()[pri:0, instance:cs.lab.AuctionTest@4cafa9aa]" started-at="2020-11-05T10:22:18 PET" name="testCase0" finished-at="2020-11-05T10:22:19 PET" duration-ms="912" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCase0 -->
-        <test-method signature="testCase1()[pri:0, instance:cs.lab.AuctionTest@629f066f]" started-at="2020-11-05T09:48:33 PET" name="testCase1" finished-at="2020-11-05T09:48:33 PET" duration-ms="1" status="PASS">
+        <test-method signature="testCase1()[pri:0, instance:cs.lab.AuctionTest@4cafa9aa]" started-at="2020-11-05T10:22:19 PET" name="testCase1" finished-at="2020-11-05T10:22:19 PET" duration-ms="2" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCase1 -->
+        <test-method signature="testCase2()[pri:0, instance:cs.lab.AuctionTest@4cafa9aa]" started-at="2020-11-05T10:22:19 PET" name="testCase2" finished-at="2020-11-05T10:22:19 PET" duration-ms="50" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCase2 -->
       </class> <!-- cs.lab.AuctionTest -->
     </test> <!-- Command line test -->
   </suite> <!-- cs.lab.AuctionTest -->
