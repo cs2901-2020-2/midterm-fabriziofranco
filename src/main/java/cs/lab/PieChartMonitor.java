@@ -53,8 +53,7 @@ public class PieChartMonitor extends JFrame implements Observer{
 
     private PieDataset createDataset() {
         DefaultPieDataset dataset = new DefaultPieDataset( );
-        for (Integer number : this.numbers) dataset.setValue(" ", number);
-
+        for (Integer number : this.numbers) dataset.setValue( Integer.toString(number), number);
         return dataset;
     }
 
