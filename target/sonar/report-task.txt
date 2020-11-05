@@ -1,0 +1,7 @@
+organization=cs2901-2020-2
+projectKey=cs2901-2020-2_midterm-fabriziofranco
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.14008
+dashboardUrl=https://sonarcloud.io/dashboard?id=cs2901-2020-2_midterm-fabriziofranco
+ceTaskId=AXWYrDtuorwZx8kgspnV
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AXWYrDtuorwZx8kgspnV

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PieChartMonitor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lab4</a> &gt; <a href="index.source.html" class="el_package">cs.lab</a> &gt; <span class="el_source">PieChartMonitor.java</span></div><h1>PieChartMonitor.java</h1><pre class="source lang-java linenums">package cs.lab;
+
+import java.awt.*;
+import java.text.DecimalFormat;
+import java.util.logging.Logger;
+
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.PieSectionLabelGenerator;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
+
+public class PieChartMonitor extends JFrame implements Observer{
+
+<span class="fc" id="L20">    private static final Logger logger = Logger.getLogger(PieChartMonitor.class.getName());</span>
+<span class="fc" id="L21">    DefaultPieDataset dataset=new DefaultPieDataset();</span>
+
+    public PieChartMonitor() throws HeadlessException {
+<span class="fc" id="L24">        super(&quot;Pie Chart&quot;);</span>
+<span class="fc" id="L25">    }</span>
+
+
+    @Override
+    public void update(Integer number) {
+<span class="fc" id="L30">        dataset.setValue(&quot; &quot;,number);</span>
+<span class="fc" id="L31">        JFreeChart chart = ChartFactory.createPieChart(</span>
+                &quot;Pie Chart&quot;,
+                dataset,
+                true,
+                true,
+                false);
+<span class="fc" id="L37">        PieSectionLabelGenerator labelGenerator = new StandardPieSectionLabelGenerator(</span>
+                &quot;Marks {0} : ({2})&quot;, new DecimalFormat(&quot;0&quot;), new DecimalFormat(&quot;0%&quot;));
+<span class="fc" id="L39">        ((PiePlot) chart.getPlot()).setLabelGenerator(labelGenerator);</span>
+
+<span class="fc" id="L41">        ChartPanel panel = new ChartPanel(chart);</span>
+<span class="fc" id="L42">        setContentPane(panel);</span>
+
+<span class="fc" id="L44">        this.setSize(800, 400);</span>
+<span class="fc" id="L45">        this.setLocationRelativeTo(null);</span>
+<span class="fc" id="L46">        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);</span>
+<span class="fc" id="L47">        this.setVisible(true);</span>
+<span class="fc" id="L48">        logger.info(&quot;PieChartMonitor has been updated&quot;);</span>
+<span class="fc" id="L49">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
