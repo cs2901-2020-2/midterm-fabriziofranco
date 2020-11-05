@@ -3,14 +3,12 @@ package cs.lab;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.general.DefaultPieDataset;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.WindowConstants;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -18,8 +16,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.labels.PieSectionLabelGenerator;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.PiePlot;
-import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.general.PieDataset;
+
 
 public class BarChartMonitor extends JFrame implements Observer {
 
@@ -40,9 +37,7 @@ public class BarChartMonitor extends JFrame implements Observer {
                 PlotOrientation.VERTICAL,
                 true,true,
                 false);
-        PieSectionLabelGenerator labelGenerator = new StandardPieSectionLabelGenerator(
-                "Marks {0} : ({2})", new DecimalFormat("0"), new DecimalFormat("0%"));
-        ((PiePlot) chart.getPlot()).setLabelGenerator(labelGenerator);
+
 
         ChartPanel panel = new ChartPanel(chart);
         setContentPane(panel);

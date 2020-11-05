@@ -2,32 +2,31 @@
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-<span class="fc" id="L7">public class DataSubject implements Subject {</span>
+<span class="fc" id="L6">public class DataSubject implements Subject {</span>
 
-<span class="fc" id="L9">    private final List&lt;Observer&gt; observers = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L8">    private final List&lt;Observer&gt; observers = new ArrayList&lt;&gt;();</span>
 
     @Override
     public void removeObserver(Observer o) {
-<span class="fc" id="L13">        observers.remove(o);</span>
-<span class="fc" id="L14">    }</span>
+<span class="fc" id="L12">        observers.remove(o);</span>
+<span class="fc" id="L13">    }</span>
 
     @Override
     public void notifyObservers(Integer number) {
-<span class="fc bfc" id="L18" title="All 2 branches covered.">        for (Observer observer : observers) {</span>
-<span class="fc" id="L19">            observer.update(number);</span>
-<span class="fc" id="L20">        }</span>
-<span class="fc" id="L21">    }</span>
+<span class="fc bfc" id="L17" title="All 2 branches covered.">        for (Observer observer : observers) {</span>
+<span class="fc" id="L18">            observer.update(number);</span>
+<span class="fc" id="L19">        }</span>
+<span class="fc" id="L20">    }</span>
 
     @Override
     public void registerObserver(Observer o) {
-<span class="fc" id="L25">        observers.add(o);</span>
-<span class="fc" id="L26">    }</span>
+<span class="fc" id="L24">        observers.add(o);</span>
+<span class="fc" id="L25">    }</span>
 
     @Override
     public List&lt;Observer&gt; getObservers() {
-<span class="fc" id="L30">        return this.observers;</span>
+<span class="fc" id="L29">        return this.observers;</span>
     }
 }
     

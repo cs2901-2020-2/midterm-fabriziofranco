@@ -3,14 +3,12 @@
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.general.DefaultPieDataset;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.WindowConstants;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -18,45 +16,42 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.labels.PieSectionLabelGenerator;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.PiePlot;
-import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.general.PieDataset;
+
 
 public class BarChartMonitor extends JFrame implements Observer {
 
-<span class="fc" id="L26">    private static final Logger logger = Logger.getLogger(BarChartMonitor.class.getName());</span>
-<span class="fc" id="L27">    private List&lt;Integer&gt; numbers = new ArrayList&lt;Integer&gt;();</span>
+<span class="fc" id="L23">    private static final Logger logger = Logger.getLogger(BarChartMonitor.class.getName());</span>
+<span class="fc" id="L24">    private List&lt;Integer&gt; numbers = new ArrayList&lt;Integer&gt;();</span>
 
     public BarChartMonitor() {
-<span class="fc" id="L30">        super(&quot;Bar Chart&quot;);</span>
-<span class="fc" id="L31">    }</span>
+<span class="fc" id="L27">        super(&quot;Bar Chart&quot;);</span>
+<span class="fc" id="L28">    }</span>
 
 
     @Override
     public void update(Integer number) {
-<span class="nc" id="L36">        numbers.add(number);</span>
-<span class="nc" id="L37">        JFreeChart chart = ChartFactory.createBarChart(</span>
+<span class="fc" id="L33">        numbers.add(number);</span>
+<span class="fc" id="L34">        JFreeChart chart = ChartFactory.createBarChart(</span>
                 &quot;Bar Chart&quot;,&quot; &quot;,&quot;&quot;,
-<span class="nc" id="L39">                createDataset(),</span>
+<span class="fc" id="L36">                createDataset(),</span>
                 PlotOrientation.VERTICAL,
                 true,true,
                 false);
-<span class="nc" id="L43">        PieSectionLabelGenerator labelGenerator = new StandardPieSectionLabelGenerator(</span>
-                &quot;Marks {0} : ({2})&quot;, new DecimalFormat(&quot;0&quot;), new DecimalFormat(&quot;0%&quot;));
-<span class="nc" id="L45">        ((PiePlot) chart.getPlot()).setLabelGenerator(labelGenerator);</span>
 
-<span class="nc" id="L47">        ChartPanel panel = new ChartPanel(chart);</span>
-<span class="nc" id="L48">        setContentPane(panel);</span>
 
-<span class="nc" id="L50">        this.setSize(800, 400);</span>
-<span class="nc" id="L51">        this.setLocationRelativeTo(null);</span>
-<span class="nc" id="L52">        this.setVisible(true);</span>
-<span class="nc" id="L53">        logger.info(&quot;BarChar has been updated&quot;);</span>
-<span class="nc" id="L54">    }</span>
+<span class="fc" id="L42">        ChartPanel panel = new ChartPanel(chart);</span>
+<span class="fc" id="L43">        setContentPane(panel);</span>
+
+<span class="fc" id="L45">        this.setSize(800, 400);</span>
+<span class="fc" id="L46">        this.setLocationRelativeTo(null);</span>
+<span class="fc" id="L47">        this.setVisible(true);</span>
+<span class="fc" id="L48">        logger.info(&quot;BarChar has been updated&quot;);</span>
+<span class="fc" id="L49">    }</span>
 
     private CategoryDataset createDataset() {
-<span class="nc" id="L57">        DefaultCategoryDataset dataset = new DefaultCategoryDataset( );</span>
-<span class="nc bnc" id="L58" title="All 2 branches missed.">        for (Integer number : this.numbers) dataset.setValue( number,Integer.toString(number), Integer.toString(number));</span>
-<span class="nc" id="L59">        return dataset;</span>
+<span class="fc" id="L52">        DefaultCategoryDataset dataset = new DefaultCategoryDataset( );</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        for (Integer number : this.numbers) dataset.setValue( number,Integer.toString(number), Integer.toString(number));</span>
+<span class="fc" id="L54">        return dataset;</span>
     }
 
 }
