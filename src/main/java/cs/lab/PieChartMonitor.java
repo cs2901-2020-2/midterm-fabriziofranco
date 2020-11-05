@@ -46,7 +46,6 @@ public class PieChartMonitor extends JFrame implements Observer{
 
         this.setSize(800, 400);
         this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         this.setVisible(true);
         logger.info("PieChartMonitor has been updated");
     }
